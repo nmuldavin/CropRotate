@@ -1,0 +1,11 @@
+{
+  "name": "crop-rotate",
+  "version": "1.0.0",
+  "description": "An in-browser crop / rotate tool with continuous image rotation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Noah Muldavin <nmuldavin@gmail.com>",
+  "license": "ISC"
+}
