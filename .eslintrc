@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "cleanjs",
+    "airbnb-base"
+  ]
+}
