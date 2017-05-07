@@ -1,11 +1,17 @@
 {
   "name": "crop-rotate",
-  "version": "1.0.0",
-  "description": "An in-browser crop / rotate tool with continuous image rotation",
+  "version": "0.0.1",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "repository": "https://github.com/nmuldavin/CropRotate.git",
   "author": "Noah Muldavin <nmuldavin@gmail.com>",
-  "license": "ISC"
+  "license": "MIT",
+  "scripts": {
+    "build-lib": "babel src -d lib"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.4.0"
+  },
+  "dependencies": {}
 }
