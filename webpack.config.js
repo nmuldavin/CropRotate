@@ -1,5 +1,6 @@
+// eslint-disable-next-line
 const webpack = require('webpack');
-const path = require('path');
+const { resolve } = require('path');
 
 const entry = './src/index.js';
 
@@ -9,7 +10,7 @@ module.exports = {
     'cropRotate.min': entry,
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: resolve('./dist'),
     filename: '[name].js',
     libraryTarget: 'umd',
     umdNamedDefine: true,

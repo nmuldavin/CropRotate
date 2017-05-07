@@ -83,7 +83,13 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
-var x = function x() {};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = add;
+function add() {
+  return 44;
+}
 
 /***/ })
 /******/ ]);
