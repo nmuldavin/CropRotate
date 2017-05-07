@@ -7,19 +7,23 @@
   "license": "MIT",
   "scripts": {
     "build-lib": "babel src -d lib",
+    "build-dist": "webpack",
     "lint": "eslint src"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
-    "eslint-config-cleanjs": "^4.0.0"
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.23.0",
+    "eslint-config-cleanjs": "^4.0.0",
     "eslint-plugin-better": "^0.1.5",
     "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "webpack": "^2.5.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
   }
 }

@@ -2,5 +2,9 @@
   "extends": [
     "cleanjs",
     "airbnb-base"
-  ]
+  ],
+  "rules": {
+    "fp/no-mutation": ["error", { "commonjs": true }],
+    "better/no-new": 0,
+  }
 }
