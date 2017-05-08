@@ -1,0 +1,4 @@
+--require mocha-clean
+--require babel-register
+--colors
+--require ./testSetup.js
