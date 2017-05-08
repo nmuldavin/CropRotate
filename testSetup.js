@@ -2,16 +2,28 @@
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+const chaiAsPromised = require("chai-as-promised");
+
+require('jsdom-global')();
 
 chai.should();
 chai.use(sinonChai);
+chai.use(chaiAsPromised);
 
 global.expect = chai.expect;
 global.sinon = sinon;
 
-const { window } = new JSDOM('');
-const { document } = window;
-global.window = window;
-global.document = document;
+// Mocking Image class because jsdom's doesn't call onload
+class Image {
+  constructor() {
+    setTimeout(() => {
+        if (this.src) {
+            this.onload();
+        } else {
+            this.onerror();
+        }
+    }, 100);
+  }
+}
+
+global.Image = Image;
