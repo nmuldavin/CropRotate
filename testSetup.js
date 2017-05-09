@@ -17,11 +17,11 @@ global.sinon = sinon;
 class Image {
   constructor() {
     setTimeout(() => {
-        if (this.src) {
-            this.onload();
-        } else {
-            this.onerror();
-        }
+      if (this.src) {
+        this.onload();
+      } else {
+        this.onerror();
+      }
     }, 100);
   }
 }
