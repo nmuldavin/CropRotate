@@ -19,6 +19,8 @@
     "fp/no-nil": 0,
     "fp/no-unused-expression": 0,
     "no-unused-expressions": 0,
-    "better/explicit-return": 0
+    "better/explicit-return": 0,
+    "fp/no-throw": 0,
+    "better/no-ifs": 0
   }
 }
