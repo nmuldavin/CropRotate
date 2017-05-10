@@ -89,16 +89,13 @@ Object.defineProperty(exports, "__esModule", {
 var loadImage = exports.loadImage = function loadImage(src) {
   return new Promise(function (resolve, reject) {
     var image = new Image();
-
-    Object.assign(image, {
-      src: src,
-      onload: function onload() {
-        resolve(image);
-      },
-      onerror: function onerror() {
-        reject(new Error('Image not found'));
-      }
-    });
+    image.onload = function () {
+      return resolve(image);
+    };
+    image.onerror = function () {
+      return reject(new Error('Image not found'));
+    };
+    image.src = src;
   });
 };
 
@@ -110,7 +107,7 @@ var getCanvas = function getCanvas(divId) {
   var canvas = document.getElementById(divId);
 
   if (!canvas) throw new Error('Referenced element not found');
-  if (!isCanvas) throw new Error('Referenced element is not a canvas');
+  if (!isCanvas(canvas)) throw new Error('Referenced element is not a canvas');
 
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;

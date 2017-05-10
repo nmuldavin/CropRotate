@@ -1,15 +1,8 @@
 export const loadImage = src => new Promise((resolve, reject) => {
   const image = new Image();
-
-  Object.assign(image, {
-    src,
-    onload() {
-      resolve(image);
-    },
-    onerror() {
-      reject(new Error('Image not found'));
-    },
-  });
+  image.onload = () => resolve(image);
+  image.onerror = () => reject(new Error('Image not found'));
+  image.src = src;
 });
 
 const isCanvas = element => (element instanceof HTMLCanvasElement);
@@ -18,12 +11,10 @@ const getCanvas = (divId) => {
   const canvas = document.getElementById(divId);
 
   if (!canvas) throw new Error('Referenced element not found');
-  if (!isCanvas) throw new Error('Referenced element is not a canvas');
+  if (!isCanvas(canvas)) throw new Error('Referenced element is not a canvas');
 
-  Object.assign(canvas, {
-    width: canvas.offsetWidth,
-    height: canvas.offsetHeight,
-  });
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
 
   return canvas;
 };
