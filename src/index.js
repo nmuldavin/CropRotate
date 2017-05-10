@@ -1,7 +1,6 @@
 export const loadImage = src => new Promise((resolve, reject) => {
   const image = new Image();
 
-  // eslint-disable-next-line
   Object.assign(image, {
     src,
     onload() {
@@ -21,9 +20,11 @@ const getCanvas = (divId) => {
   if (!canvas) throw new Error('Referenced element not found');
   if (!isCanvas) throw new Error('Referenced element is not a canvas');
 
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-  console.dir(canvas);
+  Object.assign(canvas, {
+    width: canvas.offsetWidth,
+    height: canvas.offsetHeight,
+  });
+
   return canvas;
 };
 
