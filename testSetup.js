@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 const chaiAsPromised = require("chai-as-promised");
 
-require('jsdom-global')();
+require('jsdom-global')('<canvas id="test-canvas"></canvas><div id="otherthing"></div>');
 
 chai.should();
 chai.use(sinonChai);
