@@ -2,13 +2,15 @@
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
-const chaiAsPromised = require("chai-as-promised");
+const chaiAsPromised = require('chai-as-promised');
+const chaiAlmost = require('chai-almost');
 
 require('jsdom-global')('<canvas id="test-canvas"></canvas><div id="otherthing"></div>');
 
 chai.should();
 chai.use(sinonChai);
 chai.use(chaiAsPromised);
+chai.use(chaiAlmost());
 
 global.expect = chai.expect;
 global.sinon = sinon;

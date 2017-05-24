@@ -23,6 +23,7 @@
     "babel-register": "^6.24.1",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
     "chai": "^3.5.0",
+    "chai-almost": "^1.0.1",
     "chai-as-promised": "^6.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
