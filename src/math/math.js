@@ -20,5 +20,10 @@ export const dot = (v1, v2) => lengthCheck(v1, v2) && v1.reduce(
 
 export const matrixVectorMultiply = (mat, vec) => mat.map(row => dot(row, vec));
 
-export const getBoundingDimensions = (dims, angle) =>
-  matrixVectorMultiply(makeTransformMatrix(angle), dims);
+export const getBoundingDimensions = (angle, imageDims) =>
+  matrixVectorMultiply(makeTransformMatrix(angle), imageDims);
+
+export const findScaleToFitWithin = ([bx, by], [ix, iy]) => Math.min(bx / ix, by / iy);
+
+export const findScaleToFitAtAngle = (angle, boxDims, imageDims) =>
+  findScaleToFitWithin(boxDims, getBoundingDimensions(angle, imageDims));

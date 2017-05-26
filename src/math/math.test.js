@@ -34,13 +34,31 @@ describe('(Library) math', () => {
 
   describe('(Function) getBoundingDimensions', () => {
     it('should return the correct dimensions', () => {
-      math.getBoundingDimensions([1, 2], 0).should.almost.eql([1, 2]);
-      math.getBoundingDimensions([1, 2], Math.PI / 2).should.almost.eql([2, 1]);
-      math.getBoundingDimensions([1, 2], Math.PI).should.almost.eql([1, 2]);
-      math.getBoundingDimensions([1, 2], 3 * (Math.PI / 2)).should.almost.eql([2, 1]);
+      math.getBoundingDimensions(0, [1, 2]).should.almost.eql([1, 2]);
+      math.getBoundingDimensions(Math.PI / 2, [1, 2]).should.almost.eql([2, 1]);
+      math.getBoundingDimensions(Math.PI, [1, 2]).should.almost.eql([1, 2]);
+      math.getBoundingDimensions(3 * (Math.PI / 2), [1, 2]).should.almost.eql([2, 1]);
 
-      math.getBoundingDimensions([1, 2], Math.PI / 4)
+      math.getBoundingDimensions(Math.PI / 4, [1, 2])
         .should.almost.eql([1.5 * Math.sqrt(2), 1.5 * Math.sqrt(2)]);
+    });
+  });
+
+  describe('(Function) findScaleToFitWithin', () => {
+    it('should return correct scale', () => {
+      expect(math.findScaleToFitWithin([1, 1], [1, 2])).to.almost.equal(0.5);
+      expect(math.findScaleToFitWithin([1, 2], [1, 2])).to.almost.equal(1);
+      expect(math.findScaleToFitWithin([1, 2], [4, 1])).to.almost.equal(0.25);
+    });
+  });
+
+  describe('(Function) findScaleToFitAtAngle', () => {
+    it('should return correct scale', () => {
+      expect(math.findScaleToFitAtAngle(0, [1, 1], [1, 2])).to.almost.equal(0.5);
+      expect(math.findScaleToFitAtAngle(0, [1, 2], [1, 2])).to.almost.equal(1);
+      expect(math.findScaleToFitAtAngle(Math.PI / 2, [1, 2], [1, 2])).to.almost.equal(0.5);
+      expect(math.findScaleToFitAtAngle(Math.PI / 4, [1, 1], [1, 1]))
+        .to.almost.equal(Math.sqrt(2) / 2);
     });
   });
 });

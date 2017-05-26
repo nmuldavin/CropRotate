@@ -1,4 +1,8 @@
+import { findScaleToFitAtAngle } from '../math/math';
+
 const isCanvas = element => (element instanceof HTMLCanvasElement);
+
+const getDimensions = ({ width, height }) => [width, height];
 
 export const getCanvas = (divId) => {
   const canvas = document.getElementById(divId);
@@ -18,3 +22,9 @@ export const loadImage = src => new Promise((resolve, reject) => {
   image.onerror = () => reject(new Error('Image not found'));
   image.src = src;
 });
+
+export const scaleImageToFit = (angle, canvas, image) => {
+  const imageDims = getDimensions(image);
+  const scale = findScaleToFitAtAngle(angle, getDimensions(canvas), imageDims);
+  return imageDims.map(dim => dim * scale);
+};
