@@ -3,14 +3,15 @@ import { loadImage, getCanvas } from './canvasMethods';
 describe('(Library) canvasMethods', () => {
   describe('(Function) loadImage', () => {
     const imageUrl = 'someUrl';
-    it('should return a promise that resolves with an Html5 Image object', () =>
-      loadImage(imageUrl)
-      .then(imageWrap => imageWrap.image).should.eventually.be.an.instanceOf(Image),
+
+    it('should return a promise that resolves with an object containging an Html5 Image object', () =>
+      loadImage(imageUrl).then(imageWrap => imageWrap.image)
+        .should.eventually.be.an.instanceOf(Image),
     );
 
-    it('should return an image with the provided sourceUrl', () =>
-      loadImage(imageUrl)
-      .then(imageWrap => imageWrap.image).should.eventually.have.property('src', imageUrl),
+    it('should set the provided sourceUrl on the image', () =>
+      loadImage(imageUrl).then(imageWrap => imageWrap.image)
+        .should.eventually.have.property('src', imageUrl),
     );
 
     it('should reject when the image can\'t be loaded', () =>
@@ -19,7 +20,7 @@ describe('(Library) canvasMethods', () => {
   });
 
   describe('(Function) getCanvas', () => {
-    it('should return the canvas element referenced by the provided id', () => {
+    it('should return an object containing the canvas element referenced by the provided id', () => {
       const { canvas } = getCanvas('test-canvas');
 
       canvas.should.be.an.instanceOf(HTMLCanvasElement);

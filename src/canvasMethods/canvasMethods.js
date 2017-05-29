@@ -1,8 +1,8 @@
 import { scale, scaleImageToFit } from '../math/math';
 
-const isCanvas = element => (element instanceof HTMLCanvasElement);
+export const isCanvas = element => (element instanceof HTMLCanvasElement);
 
-const getDimensions = ({ width, height }) => [width, height];
+export const getDimensions = ({ width, height }) => [width, height];
 
 export const wrapCanvas = (canvas) => {
   canvas.width = canvas.offsetWidth;
