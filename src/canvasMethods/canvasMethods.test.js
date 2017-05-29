@@ -4,11 +4,13 @@ describe('(Library) canvasMethods', () => {
   describe('(Function) loadImage', () => {
     const imageUrl = 'someUrl';
     it('should return a promise that resolves with an Html5 Image object', () =>
-      loadImage(imageUrl).should.eventually.be.an.instanceOf(Image),
+      loadImage(imageUrl)
+      .then(imageWrap => imageWrap.image).should.eventually.be.an.instanceOf(Image),
     );
 
     it('should return an image with the provided sourceUrl', () =>
-      loadImage(imageUrl).should.eventually.have.property('src', imageUrl),
+      loadImage(imageUrl)
+      .then(imageWrap => imageWrap.image).should.eventually.have.property('src', imageUrl),
     );
 
     it('should reject when the image can\'t be loaded', () =>
@@ -18,7 +20,7 @@ describe('(Library) canvasMethods', () => {
 
   describe('(Function) getCanvas', () => {
     it('should return the canvas element referenced by the provided id', () => {
-      const canvas = getCanvas('test-canvas');
+      const { canvas } = getCanvas('test-canvas');
 
       canvas.should.be.an.instanceOf(HTMLCanvasElement);
     });

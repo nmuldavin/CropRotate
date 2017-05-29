@@ -1,6 +1,12 @@
 import * as math from './math';
 
 describe('(Library) math', () => {
+  describe('(Function) scale', () => {
+    it('should correctly scale a vector', () => {
+      math.scale([1, 2, 3], 10).should.almost.eql([10, 20, 30]);
+    });
+  });
+
   describe('(Function) dot', () => {
     it('should correctly compute the dot product of two vectors', () => {
       math.dot([1, 2], [2, 3]).should.eql(8);
