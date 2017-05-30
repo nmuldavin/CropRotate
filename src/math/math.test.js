@@ -58,13 +58,13 @@ describe('(Library) math', () => {
     });
   });
 
-  describe('(Function) findScaleToFitAtAngle', () => {
+  describe('(Function) scaleToFit', () => {
     it('should return correct scale', () => {
-      expect(math.findScaleToFitAtAngle(0, [1, 1], [1, 2])).to.almost.equal(0.5);
-      expect(math.findScaleToFitAtAngle(0, [1, 2], [1, 2])).to.almost.equal(1);
-      expect(math.findScaleToFitAtAngle(Math.PI / 2, [1, 2], [1, 2])).to.almost.equal(0.5);
-      expect(math.findScaleToFitAtAngle(Math.PI / 4, [1, 1], [1, 1]))
-        .to.almost.equal(Math.sqrt(2) / 2);
+      expect(math.scaleToFit(0, [1, 1], [1, 2])).to.almost.eql([0.5, 1]);
+      expect(math.scaleToFit(0, [1, 2], [1, 2])).to.almost.eql([1, 2]);
+      expect(math.scaleToFit(Math.PI / 2, [1, 2], [1, 2])).to.almost.eql([0.5, 1]);
+      expect(math.scaleToFit(Math.PI / 4, [1, 1], [1, 1]))
+        .to.almost.eql([Math.sqrt(2) / 2, Math.sqrt(2) / 2]);
     });
   });
 });

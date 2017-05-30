@@ -1,4 +1,4 @@
-import { loadImage, getCanvas } from './canvasMethods';
+import { loadImage, getCanvas, drawImage } from './canvasMethods';
 
 describe('(Library) canvasMethods', () => {
   describe('(Function) loadImage', () => {
@@ -33,5 +33,23 @@ describe('(Library) canvasMethods', () => {
     it('should throw an error if the element is not a canvas', () => {
       expect(() => getCanvas('otherthing')).to.throw('Referenced element is not a canvas');
     });
+  });
+
+  describe('(Function) drawImage', () => {
+    it('should call context.drawImage', () => loadImage('src').then((imageWrap) => {
+      const canvasWrap = getCanvas('test-canvas');
+
+      canvasWrap.context.drawImage = sinon.spy();
+
+      const state = {
+        imageWrap,
+        canvasWrap: getCanvas('test-canvas'),
+        angle: 0,
+      };
+
+      drawImage(state);
+
+      canvasWrap.context.drawImage.should.have.been.called;
+    }));
   });
 });

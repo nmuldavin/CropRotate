@@ -1,4 +1,4 @@
-import { scale, scaleImageToFit } from '../math/math';
+import { scale, scaleToFit } from '../math/math';
 
 export const isCanvas = element => (element instanceof HTMLCanvasElement);
 
@@ -56,6 +56,6 @@ export const drawImage = ({
   context,
   image,
   angle,
-  scaleImageToFit(angle, canvasDims, dimensions),
+  scaleToFit(angle, canvasDims, dimensions),
   canvasDims,
 );

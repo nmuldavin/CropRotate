@@ -104,7 +104,7 @@ export const findScaleToFitAtAngle = (angle, boxDims, dimensions) =>
  * @param  {Dimensions} dimensions  Rectangle dimensions
  * @return {number}                 Scaled dimensions
  */
-export const scaleImageToFit = (angle, boxDims, dimensions) => scale(
+export const scaleToFit = (angle, boxDims, dimensions) => scale(
   dimensions,
   findScaleToFitAtAngle(angle, boxDims, dimensions),
 );
