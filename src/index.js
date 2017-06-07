@@ -1,4 +1,4 @@
-import { loadImage, getCanvas, drawImage } from './canvasMethods/canvasMethods';
+import { loadImage, getCanvas, drawImage, drawCropRect } from './canvasMethods/canvasMethods';
 
 /**
  * @typedef CanvasState
@@ -16,6 +16,7 @@ const cropRotate = (src, divId) => loadImage(src).then((imageWrap) => {
     imageWrap,
     canvasWrap,
   };
+  drawCropRect(state.canvasWrap.context, state.canvasWrap.dimensions, [200, 200, 400, 400]);
   drawImage(state);
 });
 
