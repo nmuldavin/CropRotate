@@ -1,4 +1,4 @@
-import { loadImage, getCanvas, drawImage } from './canvasMethods';
+import { loadImage, getCanvas, drawImage, drawCropRect } from './canvasMethods';
 
 describe('(Library) canvasMethods', () => {
   describe('(Function) loadImage', () => {
@@ -51,5 +51,24 @@ describe('(Library) canvasMethods', () => {
 
       canvasWrap.context.drawImage.should.have.been.called;
     }));
+  });
+
+  describe('(Function) drawCropRect', () => {
+    it('should call context.clearRect with specified rect', () => {
+      const canvasWrap = getCanvas('test-canvas');
+
+      canvasWrap.context.clearRect = sinon.spy();
+
+      const rect = [0, 0, 400, 400];
+
+      const state = {
+        canvasWrap: getCanvas('test-canvas'),
+        cropRect: rect,
+      };
+
+      drawCropRect(state);
+
+      canvasWrap.context.strokeRect.should.have.been.calledWith(...rect);
+    });
   });
 });

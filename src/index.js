@@ -15,8 +15,9 @@ const cropRotate = (src, divId) => loadImage(src).then((imageWrap) => {
     angle: Math.PI / 4,
     imageWrap,
     canvasWrap,
+    cropRect: [400, 100, 300, 300],
   };
-  drawCropRect(state.canvasWrap.context, state.canvasWrap.dimensions, [200, 200, 400, 400]);
+  drawCropRect(state);
   drawImage(state);
 });
 

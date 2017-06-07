@@ -111,8 +111,18 @@ const drawCropArea = (context, cropRect, { cropFill, borderStyle, borderWidth })
   strokeRect(context, cropRect, borderStyle, borderWidth);
 };
 
-export const drawCropRect = (context, canvasDims, cropRect, styleOptions = DEFAULT_STYLES) => {
+const innerDrawCropRect = (context, canvasDims, cropRect, styleOptions) => {
   context.globalCompositeOperation = 'destination-over';
   drawBackDrop(context, canvasDims, styleOptions);
   drawCropArea(context, cropRect, styleOptions);
 };
+
+export const drawCropRect = ({
+  canvasWrap: { context, dimensions },
+  cropRect,
+}, styleOptions = DEFAULT_STYLES) => innerDrawCropRect(
+  context,
+  dimensions,
+  cropRect,
+  styleOptions,
+);
