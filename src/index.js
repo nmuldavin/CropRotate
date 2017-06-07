@@ -1,4 +1,4 @@
-import { loadImage, getCanvas, drawImage, drawCropRect } from './canvasMethods/canvasMethods';
+import { loadImage, getCanvas, drawImage, drawCropRect } from './canvas/canvas';
 
 /**
  * @typedef CanvasState

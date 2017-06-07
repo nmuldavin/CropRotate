@@ -1,6 +1,6 @@
-import { loadImage, getCanvas, drawImage, drawCropRect } from './canvasMethods';
+import { loadImage, getCanvas, drawImage, drawCropRect } from './canvas';
 
-describe('(Library) canvasMethods', () => {
+describe('(Library) canvas', () => {
   describe('(Function) loadImage', () => {
     const imageUrl = 'someUrl';
 
@@ -68,7 +68,7 @@ describe('(Library) canvasMethods', () => {
 
       drawCropRect(state);
 
-      canvasWrap.context.strokeRect.should.have.been.calledWith(...rect);
+      canvasWrap.context.clearRect.should.have.been.calledWith(...rect);
     });
   });
 });
