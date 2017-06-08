@@ -1,4 +1,5 @@
-import { loadImage, getCanvas, drawImage, drawCropRect } from './canvas/canvas';
+import { loadImage, getCanvas } from './canvas/canvas';
+import { drawImage, drawCropRect } from './draw/draw';
 
 /**
  * A valid HTMLCanvas fill style.
