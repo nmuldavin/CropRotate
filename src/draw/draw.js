@@ -1,8 +1,10 @@
 import { scale, scaleToFit } from '../math/math';
 
 const drawBackDrop = (context, canvasDims, { backdropFill }) => {
-  context.fillStyle = backdropFill;
-  context.fillRect(0, 0, ...canvasDims);
+  if (backdropFill) {
+    context.fillStyle = backdropFill;
+    context.fillRect(0, 0, ...canvasDims);
+  }
 };
 
 const fillRect = (context, rect, fill) => {
