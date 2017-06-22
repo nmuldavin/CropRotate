@@ -22,6 +22,34 @@ const strokeRect = (context, rect, style, width) => {
   }
 };
 
+const drawLine = (context, xi, yi, xf, yf) => {
+  context.beginPath();
+  context.moveTo(xi, yi);
+  context.lineTo(xf, yf);
+  context.stroke();
+};
+
+const getXBounds = ([l,, w]) => [l, l + w];
+
+const getYBounds = ([, t,, h]) => [t, t + h];
+
+const drawHorizontalLine = (context, y, xi, xf) => drawLine(context, xi, y, xf, y);
+
+const drawVerticalLine = (context, x, yi, yf) => drawLine(context, x, yi, x, yf);
+
+const calculateGridlinePositions = (i, f, numLines) => {
+  const spacing = f - i;
+  const base = new Array(numLines);
+  return base.map((_, index) => i + (spacing * index));
+};
+
+const drawGrid = (context, cropRect, { gridLines }) => {
+  const horizontalPositions = calculateGridlinePositions(...getYBounds(cropRect), gridLines);
+  const verticalPositions = calculateGridlinePositions(...getXBounds(cropRect), gridLines);
+  calculateGridlinePositions(...getXBounds(cropRect), gridLines)
+    .forEach(gridPosition => drawVerticalLine(context, gridPosition, ...getYBounds(cropRect)));
+};
+
 const drawCropArea = (context, cropRect, { cropFill, borderStyle, borderWidth }) => {
   context.clearRect(...cropRect);
   fillRect(context, cropRect, cropFill);

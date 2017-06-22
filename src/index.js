@@ -9,10 +9,11 @@ import { drawImage, drawCropRect } from './draw/draw';
 
 /**
  * @typedef  {Object} StyleOptions
- * @property {CanvasStyle} [backdropFill = 'rgba(33, 33, 33, 0.7)'] Fill style for excluded regions of the canvas
- * @property {CanvasStyle} [cropAreaFill = null]                    Fill style for the cropped areas of the canvas
- * @property {CanvasStyle} [borderStyle = '#fff']                   Crop border strokeStyle
- * @property {number}      [borderWidth = 2]                        Crop border lineWidth
+ * @property {CanvasStyle}    [backdropFill = 'rgba(33, 33, 33, 0.7)'] Fill style for excluded regions of the canvas
+ * @property {CanvasStyle}    [cropAreaFill = null]                    Fill style for the cropped areas of the canvas
+ * @property {CanvasStyle}    [borderStyle = '#fff']                   Crop border strokeStyle
+ * @property {number}         [borderWidth = 2]                        Crop border lineWidth
+ * @property {number|string}  [gridLines = 2]                          Number of grid lines
  */
 
 /**
