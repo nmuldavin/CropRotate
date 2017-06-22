@@ -37,17 +37,30 @@ const drawHorizontalLine = (context, y, xi, xf) => drawLine(context, xi, y, xf, 
 
 const drawVerticalLine = (context, x, yi, yf) => drawLine(context, x, yi, x, yf);
 
-const calculateGridlinePositions = (i, f, numLines) => {
-  const spacing = f - i;
-  const base = new Array(numLines);
-  return base.map((_, index) => i + (spacing * index));
+const calcLinePositions = (i, f, numLines) => {
+  const spacing = i - f;
+
+  return (new Array(numLines)).map((_, index) => i + (spacing * (index + 1)));
 };
 
-const drawGrid = (context, cropRect, { gridLines }) => {
-  const horizontalPositions = calculateGridlinePositions(...getYBounds(cropRect), gridLines);
-  const verticalPositions = calculateGridlinePositions(...getXBounds(cropRect), gridLines);
-  calculateGridlinePositions(...getXBounds(cropRect), gridLines)
-    .forEach(gridPosition => drawVerticalLine(context, gridPosition, ...getYBounds(cropRect)));
+const drawHorizontalLines = (context, positions, bounds) =>
+  positions.forEach(position => drawHorizontalLine(context, position, ...bounds));
+
+const drawVerticalLines = (context, positions, bounds) =>
+  positions.forEach(position => drawVerticalLine(context, position, ...bounds));
+
+export const drawGrid = (context, cropRect, { gridLines }) => {
+  drawHorizontalLines(
+    context,
+    calcLinePositions(...getYBounds(cropRect), gridLines),
+    getYBounds(cropRect),
+  );
+
+  drawVerticalLines(
+    context,
+    calcLinePositions(...getXBounds(cropRect), gridLines),
+    getXBounds(cropRect),
+  );
 };
 
 const drawCropArea = (context, cropRect, { cropFill, borderStyle, borderWidth }) => {
