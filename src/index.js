@@ -29,6 +29,9 @@ const DEFAULT_STYLES = {
   cropFill: null,
   borderStyle: '#fff',
   borderWidth: 2,
+  gridLines: 2,
+  gridStyle: '#fff',
+  gridWidth: 0.7,
 };
 
 const cropRotate = (src, divId) => loadImage(src).then((imageWrap) => {
