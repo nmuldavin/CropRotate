@@ -37,6 +37,7 @@ describe('(Library) draw', () => {
       fillRectSpy = sinon.spy();
       canvasWrap = getCanvas('test-canvas');
       canvasWrap.context.strokeRect = sinon.spy();
+      canvasWrap.context.stroke = sinon.spy();
       fillStyle = null;
       state = {
         canvasWrap,
@@ -111,6 +112,18 @@ describe('(Library) draw', () => {
       drawCropRect(state, {});
 
       canvasWrap.context.strokeRect.should.not.have.been.calledWith(...state.cropRect);
+    });
+
+    it('should draw the specified number of gridLines if specified', () => {
+      drawCropRect(state, { gridLines: 3 });
+
+      expect(canvasWrap.context.stroke).to.have.been.callCount(6);
+    });
+
+    it('should not draw any gridLines if no gridLines option is specified', () => {
+      drawCropRect(state, {});
+
+      canvasWrap.context.stroke.should.not.have.been.called;
     });
   });
 });
