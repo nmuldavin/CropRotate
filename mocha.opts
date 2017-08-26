@@ -1,4 +1,5 @@
 --require mocha-clean
 --require babel-register
+--require canvas-prebuilt
 --colors
 --require ./testSetup.js
